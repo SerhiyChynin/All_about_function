@@ -1,0 +1,15 @@
+div {
+    background-color: azure;
+    height: 100px;
+    text-align: center;
+    font-size: 28px;    
+
+}
+
+.out1, .out2, .out3, .out4 {
+    text-align: center;    
+    margin: 5px;
+    width: 100px;
+    height: 100px;
+    background-color:  olivedrab;
+}
