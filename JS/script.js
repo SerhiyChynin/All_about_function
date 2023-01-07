@@ -77,7 +77,6 @@ function blockWidth() {
 }
 
 // Home Work
-
 function getRandomInt() {
     let max = 132;
     let min = 117;
@@ -106,5 +105,80 @@ document.querySelector('.b1').onclick =  function t3() {
     hello();
     Y2023();
 }
+
+
+// Arguments
+
+function f1(a, b, c) {
+    
+}
+
+function sum(x, y) {            // x,y - формальные аргументы, пока она ничему не равна, чтобы выполнить нужно подставить реальные параметры при вызове функции
+    
+    console.log(x + y);
+    
+}
+
+sum(45, 55);
+sum(100, 255);  
+let z = 50;
+sum(z, 10);
+sum(z, z * 2);
+ // аргументы дают нам гибкость, можем подставлять любые значения и выводить функцию в любом месте, будет работать
+sum(1, 2, 3, 45, 5);                                    //выведет только 2 аргумента
+sum(4);                                                 //Nan 4 + у будет не число
+
+function sum2(x1 = 20, y1 = 0) {
+    console.log(x1 + y1);
+}
+sum2(5);                                                //Параметры по умолчанию дают возможность использовать более гибкий код. Первый аргумент подставился второй взяло у = 0 и посчитало
+sum2();
+
+function showSum(elem, x, y) {
+    document.querySelector(elem).textContent = x + y; 
+}
+
+showSum('.out1', 3, 6);                                 //elem - out1, x = 5, y = 6;
+
+
+function showSum2(elem, x, y) {
+    elem.textContent = x + y; 
+}
+const out = document.querySelector('.out2');
+showSum2(out, 30, 30);                                  // Можно так записать, по сути тоже самое
+
+
+function showSum3(x, y, elem = '.out1') {               // такая запись дает возможность задать параметр по умолчанию, чтобы пользователь мог их пропустить, выносим их в конец. Джава по порядку подставляет арг, в конце заданый аргумент если не зададут он останеться по дефолту
+    console.log(arguments);                             //Arguments спец переменная, которая имеет конструкцию похожую на массив в котором собраны все елементы, арументы передаваемые внутри функции. 
+    document.querySelector(elem).textContent = arguments[0] + y; //arg[0] это тот же х; 
+}
+showSum3(20, 20);
+
+function showSum4() {               
+    console.log(arguments);
+    document.querySelector(arguments[2]).textContent = arguments[0] + arguments[1];  
+}
+showSum4(10, 20, '.out3');                               //Так писать не стоит, тяжело читать но так можно делать. Удобно когда не знает сколько значений прилетит.
+
+function showSumAll() {
+    console.log(arguments);
+    // let sum = 0;
+    // for (let i = 0; i < arguments.length; i++) {
+    //     sum += arguments[i];
+    // }
+    let sum = Array.from (arguments).reduce((accum, item) => accum += item); //arguments не массив поєтому преобразовіваем в массив после чего перебираем редьюсом.
+    console.log(sum);
+}
+
+showSumAll(4,5,6,7)
+
+function showSumAll2(...args) {
+    console.log(args);
+    let sum = args.reduce((accum, item) => accum += item); //в ES6, в args заносятся значения в виде массива, можно работать, просто и красиво
+    console.log(sum);
+}
+// Смотрю на функцию, вижу что туда передаються аргументы, ... не важно сколько аргументов я передам, все они в виде массива попадут в переменную аргс, можем использовать.
+
+showSumAll2(43, 5, 6, 7, 45, 34, 24);
 
 
