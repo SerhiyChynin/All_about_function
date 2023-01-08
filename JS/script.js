@@ -107,6 +107,10 @@ document.querySelector('.b1').onclick =  function t3() {
 }
 
 
+
+
+
+
 // Arguments
 
 function f1(a, b, c) {
@@ -180,5 +184,38 @@ function showSumAll2(...args) {
 // Смотрю на функцию, вижу что туда передаються аргументы, ... не важно сколько аргументов я передам, все они в виде массива попадут в переменную аргс, можем использовать.
 
 showSumAll2(43, 5, 6, 7, 45, 34, 24);
+
+// Функция как аргумент
+
+function showAll(result) {
+    document.querySelector('.out3').innerHTML = `<b>${result}</b> `; 
+    
+}
+
+function showSumAll3(drawFunction, ...num) {
+    drawFunction(num);
+}
+
+showSumAll3(showAll, 45, 40, 30, 50);                           // Передаем первым арг 45, вторым запустим функцию шоуОлл, которая принимает результат и выводит в аут
+// Запускаем функцию шоуОлл в которую прилетаут параметры нум в виде массива, и выводит в аут. Если много значений будет
+
+// Home Work
+
+
+
+function t1 (res) {
+    document.querySelector('.out5').innerHTML = res;   
+}
+    
+function twoNumb(min, max, drawFunction2) {
+    drawFunction2(Math.floor(min + Math.random() * (max + 1 - min)));
+}
+
+
+twoNumb(10, 20, t1);
+
+document.querySelector('.b2').onclick = t1;
+console.log();
+
 
 
