@@ -214,8 +214,7 @@ function twoNumb(min, max, drawFunction2) {
 
 twoNumb(10, 20, t1);
 
-document.querySelector('.b2').onclick = t1;
-console.log();
+document.querySelector('.b2').addEventListener('click', t1);
 
 
 
@@ -243,9 +242,10 @@ document.querySelector('.out5').style.background =
 
 // Вывод данных введенных пользователем
 
-document.querySelector('.b3').addEventListener('click', () => {
+document.querySelector('.b3').addEventListener('click',  () => {
     const s = document.querySelector('input').value;
     document.querySelector('.out6').innerHTML = 'Hello ' + clearText(s);
+
     console.log('Hello ' + clearText(s));
 })
 
@@ -253,7 +253,125 @@ function clearText(data) {
     return data.trim().toLowerCase();      // Очищаем строку, делая все буквы маленькие и используем эту функцию в выводе данных благодаря return. Вернул результат функции и подставляем в нее данные которым применяем этот результат
 }
 
+function t4() {
+    console.log(1);
+    console.log(2);
+    return;
+    console.log(3);
+}
+t4();
 
+// Прерывание функции
+// эмулируем indexOf
+
+function indexOfEmul(arr, num) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === num) return i;
+    }
+    return -1;
+}
+
+let result = indexOfEmul([22, 33, 44, 55], 22);
+console.log(result);
+
+//Пользователь вводит возраст
+document.querySelector('.b4').addEventListener('click', () => {
+    let year = +document.querySelector('.inpt').value;
+    if (isNaN(year)) return;
+    if (year <= 0 || year > 100) return;
+    document.querySelector('.out7').innerHTML = 2023 - year;
+})
+
+// ex 5 сумма
+console.group('example 5');
+
+const arr5 = [
+    [3, 4, 5],
+    [6, 7, 8],
+    
+]
+function t5() {
+    let s = 0;
+    for (let i = 0; i < arr5.length; i++) {
+        console.log(arr5[i]);
+        s += sum(arr5[i]); 
+    }
+    return s;
+                                                        // Это ценный пример с точки зрения разбора рекурсии его нужно понимать.
+}
+function sum(arr) {
+    let sum = 0;
+      for (let i = 0; i < arr.length; i++) {
+        // console.log(arr[i]);
+          sum += arr[i];
+    }
+    return sum;
+}
+
+console.log(t5())
+console.groupEnd();
+
+// ex 6 сумма
+console.group('example 6');
+
+function t6() {
+    let a = 88;
+    return a;                              //return не любит переносі на другую строку, если нужно длинное віражение пишите return (
+                                           // выражение) иначе ошибка. 
+}
+console.log(t6());
+
+console.groupEnd();
+
+// ex 7 return
+console.group('example 7');
+
+const arr7 = [[1, 2, 3], [45, 67], [34, 6, 87, 9, 0], [2, 3]];
+const evenArr7 = arr7.filter(item => {
+    return (sum(item) % 2 === 0);
+})
+console.log(evenArr7);
+
+console.groupEnd();
+
+
+// ex 7 return function
+
+function t8() {
+    return sum;
+    
+}
+
+let s = t8();
+console.log(s([10,20,30]));
+
+// Home Work
+
+
+function f1(a,b) {
+    return a + b;
+}
+console.log(f1(45, 50));
+
+function f2(a, b) {
+    if (a > b) return a;
+    return b;
+}
+console.log(f2(55, 50));
+
+let ch3 = document.querySelector('.ch3').on(click, 
+    function checkBox() {
+        if (ch3.checked) { return true }
+        else {
+            return false;
+        }
+        
+})
+console.log(checkBox());
+document.querySelector('.b5').addEventListener('click', checkBox)
+
+// console.log(checkBox());
+// console.log(checkBox());
 
 
 

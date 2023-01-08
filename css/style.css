@@ -1,12 +1,17 @@
+* {
+    margin: 0 auto;
+}
 div {
+    display: block;
     background-color: azure;
-    height: 100px;
+    /* height: 100px; */
+    padding: 10px;
     text-align: center;
     font-size: 28px;    
-
+    margin: 5px;
 }
 
-.out1, .out2, .out3, .out4, .out5, .out6 {
+.out1, .out2, .out3, .out4, .out5, .out6, .out7 {
     text-align: center;    
     margin: 5px;
     width: 100px;
