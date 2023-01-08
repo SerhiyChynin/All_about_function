@@ -196,7 +196,7 @@ function showSumAll3(drawFunction, ...num) {
     drawFunction(num);
 }
 
-showSumAll3(showAll, 45, 40, 30, 50);                           // Передаем первым арг 45, вторым запустим функцию шоуОлл, которая принимает результат и выводит в аут
+showSumAll3(showAll, 45, 40, 30);                           // Передаем первым арг 45, вторым запустим функцию шоуОлл, которая принимает результат и выводит в аут
 // Запускаем функцию шоуОлл в которую прилетаут параметры нум в виде массива, и выводит в аут. Если много значений будет
 
 // Home Work
@@ -216,6 +216,44 @@ twoNumb(10, 20, t1);
 
 document.querySelector('.b2').onclick = t1;
 console.log();
+
+
+
+
+//Return, прерывание функции, return и, возвращение функции
+
+function t1(x, y) {
+    return x + y;
+}
+
+console.log(t1(10, 20) + t1(5, 15));
+
+document.querySelector('.b2').onclick = document.querySelector('.out5').innerHTML = t1(10, 20) + t1(5, 15) + t1(0, 1);
+
+function randInt(min, max) {
+    let rand = Math.floor(min + Math.random() * (max + 1 - min));
+    return Math.floor(rand)
+}
+console.log(randInt(10, 20));
+document.querySelector('.out5').textContent = randInt(20, 100);
+document.querySelector('.out5').style.background = 'rgb(10, 55, 123)';
+document.querySelector('.out5').style.background =
+    `rgb(${randInt(0, 255)}, ${randInt(0, 255)},${randInt(0, 255)})`;  //Используем функцию для рандомного выбора цвета для вывода
+// С ретерном можно использовать результат функции много раз, переиспользовать много раз
+
+// Вывод данных введенных пользователем
+
+document.querySelector('.b3').addEventListener('click', () => {
+    const s = document.querySelector('input').value;
+    document.querySelector('.out6').innerHTML = 'Hello ' + clearText(s);
+    console.log('Hello ' + clearText(s));
+})
+
+function clearText(data) {
+    return data.trim().toLowerCase();      // Очищаем строку, делая все буквы маленькие и используем эту функцию в выводе данных благодаря return. Вернул результат функции и подставляем в нее данные которым применяем этот результат
+}
+
+
 
 
 
