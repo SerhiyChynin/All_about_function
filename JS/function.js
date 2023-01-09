@@ -154,9 +154,14 @@ function fixUserName(str) {
 
 // асинхронные callback функции
 
-async function pageLoader(callback) {
-    const data = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-    callback(data);
+// async function pageLoader(callback) {
+//     const data = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+//     callback(data);
+// }
+ function pageLoader(callback) {
+  fetch('https://jsonplaceholder.typicode.com/todos/1')
+         .then(responce => responce.json())
+        .then(json => callback(json))
 }
 
 function getAJAX(data) {
