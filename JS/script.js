@@ -359,19 +359,20 @@ function f2(a, b) {
 }
 console.log(f2(55, 50));
 
-let ch3 = document.querySelector('.ch3').on(click, 
+let ch3 = document.querySelector('.ch3'); 
     function checkBox() {
         if (ch3.checked) { return true }
         else {
             return false;
         }
         
-})
+}
 console.log(checkBox());
 document.querySelector('.b5').addEventListener('click', checkBox)
 
 // console.log(checkBox());
-// console.log(checkBox());
+
+
 
 
 

@@ -1,10 +1,18 @@
 * {
     margin: 0 auto;
 }
+.wrap {
+    display: flex;
+    justify-content: start;
+}
+.section1, .section2 {
+    margin: 5px auto;
+
+}
+
 div {
     display: block;
     background-color: azure;
-    /* height: 100px; */
     padding: 10px;
     text-align: center;
     font-size: 28px;    
@@ -17,4 +25,11 @@ div {
     width: 100px;
     height: 100px;
     background-color:  olivedrab;
+}
+.out_1, .out_2, .out_3, .out_4, .out_5, .out_6, .out_7 {
+    text-align: center;
+    margin: 5px;
+    width: 100px;
+    height: 100px;
+    background-color: olivedrab;
 }
