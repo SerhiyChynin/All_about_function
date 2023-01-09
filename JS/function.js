@@ -89,3 +89,79 @@ document.querySelector('.b_3').addEventListener('click', () => {
 
 });
 
+
+
+
+//   Callback функции
+
+const arr = [7, 8, 3, 4, 5];
+const out1 = document.querySelector('.out1');
+const out2 = document.querySelector('.out2');
+const out3 = document.querySelector('.out3');
+
+function d1(arr, myFunc, block) {
+    arr[3] = arr[3] * 4;
+    // out1.innerHTML = arr;
+    myFunc(arr, block);
+}
+
+function showArr(arr, block) {                    //Функция шоуАрр принимает арр и блок вывода, передаем эти арр и блок внутрь функции д1, внутри первый арг это арр второй пишем переменную которая выводит на страницу аут1
+    let out = '';
+    for (let i = 0; i < arr.length; i++){
+        out += arr[i] + ' ';
+    }
+    block.innerHTML = out;                  //showArr коллбек функция которую мы передали в качестве аргумента. И используется по завершению каких либо дейстий
+                                            //д1 делает операцияю над указаным массивом, выводит через указаную функцию в нужный блок.
+    
+}
+
+function showArr2(arr, block) {                    
+    let out = '';
+    for (let i = 0; i < arr.length; i++){
+        out += arr[i] + ' *';
+    }
+    block.innerHTML = out;                  
+}
+
+d1(arr, showArr, out1);
+d1(arr, showArr2, out2);
+
+
+//Пример callback
+
+function squad(item) {
+    return item ** 2;
+}
+// const arr2 = arr.map(squad);
+const arr2 = arr.map(item => item**2);
+console.log(arr2);
+showArr(arr2, out3);
+
+// Пример input
+
+document.querySelector('.b3').addEventListener('click', () => {
+    getUserName(fixUserName);
+});
+function getUserName(fixFunc) {
+    const userName = document.querySelector('input').value;
+    // const userName = prompt('Enter your name: ')                     //Морально устаревшее но чтобы знали єто тоже работает.
+    out3.innerHTML = fixFunc(userName);                                 //Получаем значение из инпута и запускаем коллбек функцию
+}
+
+function fixUserName(str) {
+    return str[0].toUpperCase().trim() + str.slice(1).toLowerCase();
+}
+
+// асинхронные callback функции
+
+async function pageLoader(callback) {
+    const data = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    callback(data);
+}
+
+function getAJAX(data) {
+    console.log('Послал запрос');
+    console.log('Ответ сервера');
+    console.log(data);
+}
+pageLoader(getAJAX);
