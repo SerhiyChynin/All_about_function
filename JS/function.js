@@ -158,15 +158,56 @@ function fixUserName(str) {
 //     const data = await fetch('https://jsonplaceholder.typicode.com/todos/1');
 //     callback(data);
 // }
- function pageLoader(callback) {
-  fetch('https://jsonplaceholder.typicode.com/todos/1')
-         .then(responce => responce.json())
+//  function pageLoader(callback) {
+//   fetch('https://jsonplaceholder.typicode.com/todos/1')
+//          .then(responce => responce.json())
+//         .then(json => callback(json))
+// }
+
+// function getAJAX(data) {
+//     console.log('Послал запрос');
+//     console.log('Ответ сервера');
+//     console.log(data);
+// }
+// pageLoader(getAJAX);
+
+
+
+// ад колбеков
+
+//  function pageLoader() {
+//   fetch('https://jsonplaceholder.typicode.com/todos/1')
+//          .then(responce => responce.json())
+//       .then(json => {
+//                  console.log('Послал запрос');
+//                  console.log('Ответ сервера');
+//                  console.log(json);
+//           fetch('https://jsonplaceholder.typicode.com/users/' + json.userId)
+//             .then(responce => responce.json())
+//          .then(json => {
+//                  console.log('Послал запрос');
+//                  console.log('Ответ сервера');
+//              console.log(json);
+//          })
+//       })
+// }
+// pageLoader();
+
+function pageLoader(url, callback) {
+    fetch(url)
+        .then(response => response.json())
         .then(json => callback(json))
 }
 
 function getAJAX(data) {
-    console.log('Послал запрос');
-    console.log('Ответ сервера');
-    console.log(data);
+        console.log('Послал запрос');
+        console.log('Ответ сервера');
+        console.log(data);
+    pageLoader('https://jsonplaceholder.typicode.com/users/' + data.userId, showUser);
 }
-pageLoader(getAJAX);
+
+function showUser(user) {
+    console.log(user);
+}
+
+pageLoader('https://jsonplaceholder.typicode.com/todos/1', getAJAX)
