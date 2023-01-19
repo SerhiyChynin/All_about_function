@@ -211,3 +211,95 @@ function showUser(user) {
 }
 
 pageLoader('https://jsonplaceholder.typicode.com/todos/1', getAJAX)
+
+const arr22 = [12, 3, 23, 34, 5, 6];
+
+function callback1() {
+    arr22.map()
+}
+
+
+
+//This, call, apply, bind
+
+// контекст функции - область видимости переменных + переменная this
+// this  это ссылка на обьект который вызывает код в данный момент
+
+let count1 = 0;
+function s1() {
+    console.log(count1);
+    console.log(this);
+    this.textContent = count1;
+    count1++;
+}
+
+// document.querySelector('.b_1').addEventListener('click', s1);
+ 
+
+
+// const s2 = () => {
+//     console.log(count1);
+//     console.log(this);
+//     this.textContent = count1;  // в стрелочной фцнкции this  не работает
+//     count1++;
+// }
+
+// document.querySelector('.b_2').addEventListener('click', s2);
+ 
+//call
+// s1.call(document.querySelector('.b_1'));
+// s1.call(document.querySelector('.b_1'));
+// s1.call(document.querySelector('.b_2'));
+// s1();
+
+//call позволяет подменять контекст функции. подменять This
+
+document.querySelector('.b_1').addEventListener('click', () => {
+
+    // s1.call(document.querySelector('.b_1'));
+    s1.call(document.querySelector('.b_2'));
+    
+});
+ 
+
+
+
+function s3(count1) {
+    console.log(count1);
+    console.log(this);
+    this.textContent = count1;
+    
+}
+
+document.querySelector('.b_3').addEventListener('click', () => {
+    count1++;
+    s3.call(document.querySelector('.b_2'), count1);
+    
+})
+
+function sum2(a,b) {
+    this.innerHTML = a + b;
+}
+
+document.querySelector('.b_2').addEventListener('click', () => {
+    sum2.call(document.querySelector('.out_2'), 13,5);
+    sum2.apply(document.querySelector('.out_3'), [13,5, 3,4,5,]); // apply удобен для множества арг, мы прост передаем массив и арг подставляются
+}
+);
+
+
+//bind 
+
+const s4 = s1.bind(document.querySelector('.out_4'));
+s4();
+s4();
+s4();
+document.querySelector('.b_4').addEventListener('click', s4); 
+// bind позволяет создать новую функцию и привязать контекст один раз пока его не поменяешь. Call apply каждыц раз нужно прописывать
+
+const sum3 = sum2.bind(document.querySelector('.out_5'));
+
+sum3(10, 20);
+sum3(10, 25);
+
+
