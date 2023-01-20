@@ -302,4 +302,51 @@ const sum3 = sum2.bind(document.querySelector('.out_5'));
 sum3(10, 20);
 sum3(10, 25);
 
+// Частичные функции, переопределенным аргументом (частичные вычисления)
 
+
+function sum4(a, b, c) {
+    console.log(arguments);
+    this.innerHTML = a + b + c;
+}
+
+const sum5 = sum4.bind(document.querySelector('.b_6'), 10, 20);  
+
+document.querySelector('.b_6').addEventListener('click', () => {
+    sum5(3, 4, 5);
+
+}); 
+
+// на основе функции создаю свою функцию, с нужным колл аргументов,  и некоторые арг могу заранее определять. Частичная функция
+// вместо 3 подставится 10, 4 подставится 20.. Арг подставляються с начала смещая остальные.
+
+function sum7(a,b,c) {
+    return a + b + c;
+
+}
+
+const sum8 = sum7.bind(undefined, 100,200)
+
+document.querySelector('.b_7').addEventListener('click', () => {
+    document.querySelector('.out_7').textContent = sum8(5);
+})
+
+// Вытягивание методов
+
+const validate = {
+    password: 'HimyHisssss',
+    email: 'HelloKitty@gmail.com',
+    isValid: false,
+    sayHi() {
+        console.log(this);
+        return (this.password.length > 6) ? true : false;
+
+    }
+}
+console.log(validate.sayHi());
+
+const obj = { password: 'Hello{{{{'}
+const validatePassword = validate.sayHi.bind(obj);
+console.log(validatePassword());
+obj.password = '123';
+console.log(validatePassword());
