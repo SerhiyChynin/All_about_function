@@ -212,11 +212,21 @@ function showUser(user) {
 
 pageLoader('https://jsonplaceholder.typicode.com/todos/1', getAJAX)
 
+
+
+
+// HomeWork 
+
 const arr22 = [12, 3, 23, 34, 5, 6];
 
-function callback1() {
-    arr22.map()
+function callback1(item) {
+    // console.log(arr23, 'HellOOOOO');
+    console.log(item, 'Hello Baby');
+    return item ** 3;
 }
+    const arr23 = arr22.map(item => item ** 3)
+callback1(arr23);
+
 
 
 
