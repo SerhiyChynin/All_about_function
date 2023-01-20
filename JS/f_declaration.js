@@ -79,6 +79,68 @@ function showAlert() {
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
-for (let i = 0; i < 20; i++) {
-    console.log(randomInt(10, 20));
+// for (let i = 0; i < 20; i++) {
+//     console.log(randomInt(10, 20));
+// }
+function year(d) {
+    let today = new Date()
+    let year = today.getFullYear()
+    return (year - d);
 }
+console.log(year(2001));
+
+//Чистые функции зависят только от аргумента и при одном и том же аргументе будут всегда давать один и тот же результат
+// Не создают сайд ефектов, не меняют состояние кода, внешних переменных по отношению к текущей функции, не выводят что то на страницу
+
+
+// Функции высшего порядка - функция которая может принять функцию в виде аргумента, и возвратить какую либо функцию
+//Функция в ДЖС является обьектом
+function hello() {
+    console.log('Hello Baby');
+}
+hello.hi = 123;
+hello();
+console.log(hello.hi);
+
+function pOdd() {
+    console.log('odd');
+}
+
+function pEven() {
+    console.log('even');
+}
+
+function myNumber(n, odd, even) {
+    if (n % 2 === 0) return even;
+    else return odd;
+}
+
+let z = myNumber(5, pOdd, pEven)
+// console.log(z);
+z();
+
+const w = [
+    {name: 'Serhii', 'age': 25},
+    {name: 'Ser', 'age': 35},
+    {name: 'Hii', 'age': 27}
+]
+
+let w1 = [];
+for (let i = 0; i < w.length; i++) {
+    if (w[i].age >= 26) w1.push(w[i]);
+    
+}
+console.log(w1);
+
+w1 = w.filter(mySort);
+function mySort(item) {
+    if (item.age >= 26) return true;
+}
+console.log(w1);
+
+w1 = w.filter(item => item.age >= 26);
+console.log(w1);
+
+
+
+
