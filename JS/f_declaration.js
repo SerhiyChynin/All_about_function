@@ -141,6 +141,55 @@ console.log(w1);
 w1 = w.filter(item => item.age >= 26);
 console.log(w1);
 
+const user = {
+    age: 24,
+    password: 'sdjfu[21',
+    agreeToTerm: true,
+}
+const user2 = {
+    age: 34,
+    password: '210qwerty',
+    agreeToTerm: false,
+}
+
+function checkAge(user) {
+    return user.age > 18;
+}
+
+function checkPassword(user) {
+    return user.password.length >= 8;
+}
+
+function checkTerms(user) {
+    return user.agreeToTerm === true;
+}
+
+// console.log(checkAge(user));
+
+function validate(obj, ...tests) {
+    for (let i = 0; i < tests.length; i++) {
+        if (tests[i](obj) === false) return false;
+    }
+    return true;
+}
+
+console.log(validate(user, checkAge, checkPassword, checkTerms));
+
+function createValidator(...tests) {
+    return function (obj) {
+            for (let i = 0; i < tests.length; i++) {
+        if (tests[i](obj) === false) return false;
+    }
+    return true;
+    }
+}
+
+const validator1 = createValidator(checkAge, checkPassword, checkTerms);
+const validator2 = createValidator(checkAge, checkPassword);
+
+console.log(validator1(user));
+console.log(validator2(user2));
+
 
 
 
