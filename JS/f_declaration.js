@@ -343,3 +343,31 @@ function fact2(n) {
 }
 fact2(4);
 console.log(s);
+
+//HomeWork
+
+function r1(n) {
+    if (n === 0) return;
+    // console.log(n);
+    document.querySelector('.out_3').innerHTML += n + ' ';
+    r1(n - 1)   
+}
+r1(10);
+
+let s1 = -2;
+function r2(n) {
+    if (s1 === n) return;
+    s1 = s1 + 2;
+    document.querySelector('.out_4').innerHTML += s1 + ' ';
+    r2(n)
+    
+}
+r2(10);
+
+function r3(even) {
+    even = randomInt(0, 100);
+    if (even === 100) return;
+    console.log(even);
+    r3();
+}
+r3();
