@@ -56,6 +56,7 @@ let bagg2 = createBagger();
 
 let p;
 
+//Home work
 
 (function () {
     let w = 70;
@@ -76,15 +77,35 @@ let p;
 function sum10 () {
     let count = 0;
     return (() => {
+        if (count === 50) return false;
         count++;
         console.log(count);
-    
-        })()
-    }
-
-
+        
+    })()
+}
 let r = sum10;
 r();
+
+
+    
+function ddd() {
+    let count = 0;
+    return function () {
+        if (count === 100) return false;
+        count++;
+        console.log(count);  
+        rrr()
+    }
+}
+
+let rrr = ddd()
+let rrr2 = ddd()
+rrr();
+rrr();
+rrr();
+rrr2();
+rrr();
+
 
 
 
