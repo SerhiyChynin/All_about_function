@@ -33,3 +33,19 @@ div {
     height: 100px;
     background-color: olivedrab;
 }
+.out_2 {
+    
+    width: 800px;
+    border-bottom: 3px solid #000;
+    background: rgb(206, 180, 180);
+
+}
+.squad {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: orangered;
+    margin: 0;
+    padding: 0;
+
+}

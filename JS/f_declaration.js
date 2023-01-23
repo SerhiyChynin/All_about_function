@@ -191,5 +191,155 @@ console.log(validator1(user));
 console.log(validator2(user2));
 
 
+//Рекурсия - вызов функией самой себя. Часто рекурсию можно реализовать с помощью цыкла. И обратное.
+
+let t = 0;
+function t1() {
+    t++;
+    console.log(t);
+    if (t === 100) return;
+    t1();
+}
+// t1();
+//цыкл
+
+function f2() {
+    let out = '';
+    for (let i = 1; i <= 50; i++) {
+        out += i + ' ';
+    }
+    // console.log(out);
+}
+f2();
+
+//recursion
+
+let i = 0;
+let out = '';
+function t3() {
+    i++;
+    out += i + ' ';
+    if (i >= 25) return;
+    t3();
+}
+t3();
+// console.log(out);
+
+function randomInt(min, max) {
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
+}
+
+let total = 0;
+function moneyRecursion() {
+    let m = randomInt(0, 100);
+    console.log('add: ' + m);
+    total += m;
+    console.log('total: ' + total);
+    if (total >= 300) return;
+    moneyRecursion();
+}
+
+// moneyRecursion();
+
+function moneyCycle() {
+    let total = 0;
+    // for (let i = 0; true; i++)
+    while(true){
+        let m = randomInt(0, 100);
+        console.log('add: ' + m);
+        total += m;
+        console.log('total: ' + total);
+        if (total >= 300) return;
+    }
+}
+// moneyCycle();
+
+const users = {
+    "ivaniv": {
+        age: 25,
+        parent: {
+            'ivanov-aaaaa': {
+                age: 45
+            },
+            "ivanob-bbbbb": {
+                age: 44
+            },
+              'Chacha': {
+                    age: 66,
+                },
+            'sergeev-a': {
+                age: 88,
+                parent: {
+                    'lionenko': {}
+                },
+                } 
+            }
+        },
+        'kostento': {
+            age: 33,
+            parent: {
+                'kaka': {
+                    age: 50
+                }
+            }
+        }
+    }
 
 
+function userParentRecursion(obj) {
+    if (obj.parent !== undefined) {
+        for (let key in obj.parent) {
+            console.log(key);
+            userParentRecursion(obj.parent[key]);
+     }
+ }
+}
+
+for (let key in users) {
+    
+userParentRecursion(users[key]);
+}
+
+let position = 0;
+
+// document.querySelector('.squad').addEventListener('click', () => {
+//     for (let i = 0; i < 400; i++){
+        
+//         position++;
+//         document.querySelector('.squad').style.left = position + 'px';
+//     }
+// })
+
+function recursionAnimation() {
+    position++;
+    if (position === 500) return;
+    document.querySelector('.squad').style.left = position + 'px';
+    // recursionAnimation();
+    animation();
+}
+function animation() {
+    setTimeout(recursionAnimation, 1)
+}
+animation();
+
+// 1* 2 *3 *4 *5;
+
+function fact1(n) {
+    let s = 1;
+    for (let i = 1; i <= n; i++){
+        s = s * i;
+
+    }
+    console.log(s );
+}
+fact1(5);
+
+let s = 1;
+function fact2(n) {
+    if (n === 0) return;
+    s = s * n;
+    fact2(n - 1);
+}
+fact2(4);
+console.log(s);
